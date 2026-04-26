@@ -305,7 +305,7 @@ def tarik_data(ticker, period="1y"):
     for _ in range(3):
         try:
             df = yf.download(ticker, period=period, interval="1d",
-                             progress=False, auto_adjust=True)
+                             progress=False, auto_adjust=False)
             if not df.empty: break
             time.sleep(random.uniform(0.3, 0.7))
         except Exception:
@@ -332,8 +332,9 @@ def tarik_data(ticker, period="1y"):
     if "Volume" not in df.columns: df["Volume"] = 0.0
     df["Volume"] = pd.to_numeric(df["Volume"], errors="coerce").fillna(0)
     df = df.dropna(subset=["Close_IDR"]).sort_values("Date").reset_index(drop=True)
-    df["Support"]    = df["Low_IDR"].rolling(20).min().shift(1)
-    df["Resistance"] = df["High_IDR"].rolling(20).max().shift(1)
+    win = min(20, max(5, len(df)//3))
+    df["Support"]    = df["Low_IDR"].rolling(win).min().shift(1)
+    df["Resistance"] = df["High_IDR"].rolling(win).max().shift(1)
     vm = df["Volume"].rolling(20).mean()
     df["Vol_Spike"] = df["Volume"] > (vm * 1.5)
     df["Is_Up"]     = df["Close_IDR"] > df["Open_IDR"]
