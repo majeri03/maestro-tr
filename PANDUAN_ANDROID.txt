@@ -1,47 +1,32 @@
 =======================================================================
- PANDUAN BUILD APK ANDROID - MAESTRO TRADING
+ PANDUAN BUILD APK ANDROID - MAESTRO TRADING INTELLIGENCE
 =======================================================================
 
-CARA 1: DEPLOY GRATIS KE WEB (Streamlit Cloud) - PALING MUDAH
+CARA 1: WEB (Streamlit Cloud) - PALING MUDAH - 15 MENIT - GRATIS
 -----------------------------------------------------------------------
-1. Buka: https://github.com (buat akun gratis)
-2. Buat repo baru (misal: "maestro-trading")
-3. Upload file: Maestro_App.py dan requirements.txt
-4. Buka: https://streamlit.io/cloud
-5. Login dengan GitHub
-6. Klik "New App" -> pilih repo Anda -> Deploy!
-7. Dapat URL publik, misal: https://maestro-trading.streamlit.app
-8. Buka URL itu di HP Android = sudah seperti app!
+1. Daftar di github.com (gratis)
+2. Buat repo baru "maestro-trading" -> set PUBLIC
+3. Upload: Maestro_App.py + requirements.txt
+4. Buka share.streamlit.io -> Login GitHub
+5. New App -> pilih repo -> Main file: Maestro_App.py -> Deploy
+6. Dapat URL publik -> buka di HP = langsung jalan!
 
-CARA 2: BUILD APK ANDROID (WebView Wrapper) - GRATIS
+CARA 2: APK ANDROID (wrap URL ke APK) - GRATIS
 -----------------------------------------------------------------------
-Setelah punya URL Streamlit Cloud dari Cara 1:
-1. Buka: https://gonative.io (gratis untuk 1 app)
-   ATAU: https://websitetoapk.com (gratis)
-   ATAU: https://appmaker.xyz
+Setelah dapat URL dari Cara 1:
+1. Buka gonative.io ATAU websitetoapk.com
 2. Masukkan URL Streamlit Anda
-3. Pilih nama app: "Maestro Trading"
-4. Download APK yang dihasilkan
-5. Install di HP Android (aktifkan "Izinkan sumber tidak dikenal")
+3. Download APK -> install di Android
+   (Settings -> Install unknown apps -> izinkan)
 
-CARA 3: JALANKAN LOKAL DI HP ANDROID - TANPA INTERNET
+CARA 3: TERMUX (offline di HP) - TANPA CLOUD
 -----------------------------------------------------------------------
-1. Install "UserLAnd" dari Play Store (gratis, Linux di Android)
-2. Pilih Ubuntu -> install Python
-3. Copy file Maestro_App.py ke HP
-4. Jalankan: pip install -r requirements.txt
-5. Jalankan: streamlit run Maestro_App.py
-6. Buka browser Android: http://localhost:8501
+1. Install Termux dari F-Droid.org
+2. pkg update && pkg install python
+3. pip install streamlit yfinance pandas numpy scipy plotly requests bs4 lxml
+4. streamlit run Maestro_App.py
+5. Buka di browser HP: http://localhost:8501
 
-CARA 4: TERMUX (ADVANCED) - LOKAL TANPA CLOUD
------------------------------------------------------------------------
-1. Install Termux dari F-Droid (https://f-droid.org)
-2. Di Termux ketik:
-   pkg update && pkg install python
-   pip install streamlit yfinance pandas numpy scipy plotly requests bs4
-   streamlit run Maestro_App.py
-3. Buka di browser: http://localhost:8501
-
-CARA TERCEPAT untuk PEMULA: Cara 1 -> Cara 2
-Estimasi waktu: 15-30 menit, GRATIS.
+TIP: Untuk homescreen seperti app native:
+Chrome -> buka URL Streamlit -> menu (...) -> "Add to Home Screen"
 =======================================================================
