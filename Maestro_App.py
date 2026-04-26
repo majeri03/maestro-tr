@@ -1153,9 +1153,9 @@ elif "Saham" in mode:
                                   "Nama":(f.get("Nama") or tk)[:22],
                                   "Harga (Rp)":h, "1 Lot (Rp)":lot,
                                   "Chg%":round(pct,2), "Skor":sk,
-                                  "PER":round(f["PER"],1) if f.get("PER") else None,
-                                  "PBV":round(f["PBV"],2) if f.get("PBV") else None,
-                                  "ROE%":round(f["ROE"]*100,1) if f.get("ROE") else None,
+                                  "PER":round(float(f["PER"]),1) if f.get("PER") else None,
+                                  "PBV":round(float(f["PBV"]),2) if f.get("PBV") else None,
+                                  "ROE%":round(float(f["ROE"])*100,1) if f.get("ROE") else None,
                                   "Support":sup,"Resistance":res,
                                   "Sektor":f.get("Sektor","--")})
             bar.progress((i+1)/len(LQ45), text=f"Scanning {tk}...")
